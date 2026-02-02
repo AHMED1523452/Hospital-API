@@ -60,6 +60,7 @@ builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Logging.AddConsole();
+builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging"));
 
 //.for the sample dependency not for the DB 
 builder.Services.AddTransient<ISideService, SideService>();
@@ -188,3 +189,4 @@ app.MapControllers();
 app.UseMiddleware<GlobalExceptionMiddleWare>();
 
 app.Run();
+
